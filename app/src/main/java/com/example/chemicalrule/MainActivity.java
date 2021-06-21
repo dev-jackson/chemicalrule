@@ -11,6 +11,6 @@ public class MainActivity extends AppCompatActivity {
         setTheme(R.style.Theme_Splash);
         super.onCreate(savedInstanceState);
         setTheme(R.style.Theme_ChemicalRule);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
     }
 }

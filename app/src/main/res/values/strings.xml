@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Chemical Rule</string>
+    <string name="version">V0.0.1</string>
 </resources>

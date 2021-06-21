@@ -1,4 +1,4 @@
-*.iml
+/opt/android-studio/jre/opt/android-studio/jre*.iml
 .gradle
 /local.properties
 /.idea/caches
