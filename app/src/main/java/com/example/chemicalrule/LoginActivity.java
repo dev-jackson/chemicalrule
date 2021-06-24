@@ -14,6 +14,8 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.Objects;
+
 public class LoginActivity extends AppCompatActivity {
 
     @Override
@@ -25,21 +27,29 @@ public class LoginActivity extends AppCompatActivity {
         Button btn_login = (Button) findViewById(R.id.btn_login);
 
         //Inputs
-        TextInputLayout text_username = (TextInputLayout) findViewById(R.id.input_username);
-        TextInputLayout text_password = (TextInputLayout) findViewById(R.id.input_password);
+        TextInputEditText text_username = (TextInputEditText) findViewById(R.id.input_username);
+        TextInputEditText text_password = (TextInputEditText) findViewById(R.id.input_password);
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("a",text_password.getEditText().getText().toString());
                 Intent enter = new Intent(v.getContext(),MainActivity.class);
-                if(text_password.toString().equals("123")
-                        && text_username.toString().equals("user")
-                ){
-                    enter.putExtra("name",text_username.toString()); //send data
-                    startActivity(enter);
-                }else{
-                    Toast.makeText(v.getContext(),"Credenciales Incorrectas", Toast.LENGTH_LONG).show();
+                try {
+                    String username = text_username.getText().toString();
+                    String password = text_password.getText().toString();
+
+                    if((username.equals("user") && password.equals("123"))){
+                        enter.putExtra("name",text_username.toString()); //send data
+                        startActivity(enter);
+                    }else{
+                        Toast.makeText(
+                                v.getContext(),
+                                "Incorrect credentials",
+                                Toast.LENGTH_LONG
+                        ).show();
+                    }
+                }catch (NullPointerException e){
+                    Log.d("Exception ",e.getMessage());
                 }
                 //enter.putExtra("name",text_username.toString()); //send data
                 //Bundle bundle = getIntent().getExtras();

@@ -44,7 +44,6 @@
                 android:textSize="18sp"
                 android:textColor="@color/white"
                 />
-
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -66,11 +65,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/login"
+                    android:paddingVertical="8sp"
                     android:textSize="26sp"
                     />
-
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/input_username"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -78,14 +76,15 @@
                     android:hint="@string/username">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/input_username"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:singleLine="true"
                         />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/input_password"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -94,8 +93,11 @@
                     android:hint="@string/password">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/input_password"
+                        android:inputType="textPassword"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
