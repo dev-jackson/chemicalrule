@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Chemical Rule</string>
     <string name="version">V0.0.1</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="login">Log in</string>
+    <string name="legend_login">Learn chemistry while having fun</string>
+    <string name="enter">Enter</string>
+    <string name="legend_bottom_account">You do not have an account?</string>
+    <string name="create_account">Create account</string>
 </resources>
