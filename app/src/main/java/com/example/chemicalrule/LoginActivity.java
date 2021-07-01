@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -26,36 +28,29 @@ public class LoginActivity extends AppCompatActivity {
 
         Button btn_login = (Button) findViewById(R.id.btn_login);
 
-        //Inputs
+        // TextView
+                //Inputs
         TextInputEditText text_username = (TextInputEditText) findViewById(R.id.input_username);
         TextInputEditText text_password = (TextInputEditText) findViewById(R.id.input_password);
 
-        btn_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent enter = new Intent(v.getContext(),MainActivity.class);
-                try {
-                    String username = text_username.getText().toString();
-                    String password = text_password.getText().toString();
+        btn_login.setOnClickListener((view) -> {
+            Intent enter = new Intent(view.getContext(),MainActivity.class);
 
-                    if((username.equals("user") && password.equals("123"))){
-                        enter.putExtra("name",text_username.toString()); //send data
-                        startActivity(enter);
-                    }else{
-                        Toast.makeText(
-                                v.getContext(),
-                                "Incorrect credentials",
-                                Toast.LENGTH_LONG
-                        ).show();
-                    }
-                }catch (NullPointerException e){
-                    Log.d("Exception ",e.getMessage());
-                }
+            String username = Objects.requireNonNull(text_username.getText()).toString();
+            String password = Objects.requireNonNull(text_password.getText()).toString();
+
+            if((username.equals("user") && password.equals("123"))){
+                enter.putExtra("name",text_username.toString()); //send data
+                startActivity(enter);
+            }else{
+                Snackbar.make(view,"Incorrect credentials",Snackbar.LENGTH_LONG)
+                    .setAction("Action",null).show();
+
+            }
                 //enter.putExtra("name",text_username.toString()); //send data
                 //Bundle bundle = getIntent().getExtras();
                 // bundle.getString(name_key);
                 //startActivity(enter);
-            }
         });
     }
 
