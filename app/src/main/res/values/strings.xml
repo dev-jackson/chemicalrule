@@ -18,4 +18,13 @@
     <string name="email">Email</string>
     <string name="cancel">Cancel</string>
     <string name="register">Register</string>
+    <string-array name="citys">
+        <item>Guayaquil</item>
+        <item>Milagro</item>
+        <item>Santa Elena</item>
+        <item>Guaranda</item>
+        <item>Quito</item>
+        <item>Ambato</item>
+        <item></item>
+    </string-array>
 </resources>

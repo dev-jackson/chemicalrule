@@ -122,7 +122,10 @@
                         android:layout_height="wrap_content"
                         android:text="@string/legend_bottom_account" />
                     <TextView
-                        android:id="@+id/text11"
+                        android:id="@+id/new_user"
+                        android:textStyle="bold"
+                        android:focusable="true"
+                        android:clickable="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/create_account"

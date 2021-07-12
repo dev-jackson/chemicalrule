@@ -28,6 +28,8 @@ public class LoginActivity extends AppCompatActivity {
 
         Button btn_login = (Button) findViewById(R.id.btn_login);
 
+        // TextView as Button
+        TextView btn_new_user = (TextView) findViewById(R.id.new_user);
         // TextView
                 //Inputs
         TextInputEditText text_username = (TextInputEditText) findViewById(R.id.input_username);
@@ -51,6 +53,11 @@ public class LoginActivity extends AppCompatActivity {
                 //Bundle bundle = getIntent().getExtras();
                 // bundle.getString(name_key);
                 //startActivity(enter);
+        });
+
+        btn_new_user.setOnClickListener((view)->{
+            Intent new_user = new Intent(view.getContext(), RegisterActivity.class);
+            startActivity(new_user);
         });
     }
 
