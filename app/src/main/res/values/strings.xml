@@ -18,6 +18,8 @@
     <string name="email">Email</string>
     <string name="cancel">Cancel</string>
     <string name="register">Register</string>
+    <string name="password_repeat">Password Repeat</string>
+    <string name="accept_term">I accept terms and conditions.</string>
     <string-array name="citys">
         <item>Guayaquil</item>
         <item>Milagro</item>
