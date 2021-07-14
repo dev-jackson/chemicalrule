@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="22dp"
-                android:background="@drawable/ic_baseline_arrow_back_ios_24"
+                android:background="@drawable/ic_baseline_arrow_back_ios_white_24"
                 android:contentDescription="todo"
                 android:padding="14dp" />
 

@@ -20,6 +20,23 @@
     <string name="register">Register</string>
     <string name="password_repeat">Password Repeat</string>
     <string name="accept_term">I accept terms and conditions.</string>
+
+    <string name="settings">Configuracion</string>
+    <string name="language">Idioma</string>
+    <string name="contact">Contanto</string>
+    <string name="exit">Salir</string>
+    <string name="about">Acerca de</string>
+
+    <!-- Name Devs -->
+    <string name="dev1">Frank Elizalde</string>
+    <string name="dev2">Kerlly Guerrero</string>
+    <string name="dev3">Angel Sanchez</string>
+
+    <string name="copy">© 2020 - 2021 Chectm Inc.</string>
+    <string name="profession">Profesion: </string>
+    <string name="profession_name"> Pre-Ing. en Sistemas</string>
+    <string name="icon_dev"></string>
+
     <string-array name="citys">
         <item>Guayaquil</item>
         <item>Milagro</item>

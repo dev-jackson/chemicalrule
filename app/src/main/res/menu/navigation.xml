@@ -4,16 +4,17 @@
     <item
         android:id="@+id/navigation_songs"
         android:icon="@drawable/ic_baseline_videogame_asset_24"
-        android:title="Songs"/>
-
-    <item
-        android:id="@+id/navigation_albums"
-        android:icon="@drawable/ic_baseline_videogame_asset_24"
-        android:title="Albums"/>
+        android:title="Game"/>
 
     <item
         android:id="@+id/navigation_artists"
-        android:icon="@drawable/ic_baseline_videogame_asset_24"
+        android:icon="@drawable/ic_baseline_notifications_24"
         android:title="Artists"/>
+
+    <item
+        android:id="@+id/navigation_albums"
+        android:icon="@drawable/ic_baseline_account_circle_24"
+        android:title="Albums"/>
+
 
 </menu>

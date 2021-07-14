@@ -2,19 +2,17 @@ package com.example.chemicalrule;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
 
@@ -27,6 +25,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
         Button btn_login = (Button) findViewById(R.id.btn_login);
+        ImageButton btnMenu = (ImageButton) findViewById(R.id.menu_test);
+        btnMenu.setOnClickListener(this::show_menu);
 
         // TextView as Button
         TextView btn_new_user = (TextView) findViewById(R.id.new_user);
@@ -59,6 +59,21 @@ public class LoginActivity extends AppCompatActivity {
             Intent new_user = new Intent(view.getContext(), RegisterActivity.class);
             startActivity(new_user);
         });
+    }
+
+    public void show_menu(View v){
+        PopupMenu popup = new PopupMenu(this, v);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.menu_popup,popup.getMenu());
+        popup.setOnMenuItemClickListener((item)->{
+            if(item.getItemId() == R.id.about){
+                Intent intentAbout = new Intent(v.getContext(), AboutActivity.class);
+                startActivity(intentAbout);
+            }
+            return  true;
+        });
+        popup.show();
+
     }
 
 }
