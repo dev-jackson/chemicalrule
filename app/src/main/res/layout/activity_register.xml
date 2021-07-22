@@ -35,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="15dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="0dp"
                 android:text="@string/app_name"
                 android:textColor="@color/white"
                 android:textSize="28sp" />
@@ -56,7 +56,7 @@
             android:background="@drawable/widget_custom_border"
             android:gravity="bottom"
             android:orientation="vertical"
-            android:padding="22dp">
+            android:paddingHorizontal="24dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -69,7 +69,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="12dp"
+                android:layout_marginVertical="10dp"
                 android:hint="@string/username">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -84,7 +84,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="12dp"
+                android:layout_marginVertical="10dp"
                 android:hint="@string/email">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -95,12 +95,26 @@
                     android:singleLine="true" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="12dp"
+                android:layout_marginVertical="10dp"
+                android:hint="@string/date_of_birth">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/data_of_birth"
+                    android:inputType="datetime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
                 android:hint="@string/password"
                 app:endIconMode="password_toggle">
 
@@ -117,7 +131,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="12dp"
+                android:layout_marginVertical="10dp"
                 android:hint="@string/password_repeat"
                 app:endIconMode="password_toggle">
 
@@ -131,19 +145,19 @@
             </com.google.android.material.textfield.TextInputLayout>
             <CheckBox
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="20dp"
                 android:text="@string/accept_term"
                 />
             <Button
                 android:id="@+id/btn_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="12dp"
+                android:layout_marginVertical="10dp"
                 android:background="@drawable/bottom_custom_border"
                 android:gravity="center"
                 android:text="@string/register"
                 android:textColor="@color/white"
-                android:textSize="15sp" />
+                android:textSize="14sp" />
         </LinearLayout>
 
     </LinearLayout>

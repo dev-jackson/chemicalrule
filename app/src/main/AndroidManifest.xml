@@ -9,7 +9,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ChemicalRule">
         <activity android:name=".AboutActivity"></activity>
-        <activity android:name=".RegisterActivity" />
+        <activity android:name=".ui.ItemLocationActivity"></activity>
+        <activity android:name=".RegisterActivity">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
         <activity
             android:name=".LoginActivity"
             android:theme="@style/Theme_Splash">

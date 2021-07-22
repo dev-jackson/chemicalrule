@@ -46,4 +46,5 @@
         <item>Ambato</item>
         <item></item>
     </string-array>
+    <string name="date_of_birth">Date of birth</string>
 </resources>

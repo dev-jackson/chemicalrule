@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
 
         Button btn_login = (Button) findViewById(R.id.btn_login);
         ImageButton btnMenu = (ImageButton) findViewById(R.id.menu_test);
-        btnMenu.setOnClickListener(this::show_menu);
+        //btnMenu.setOnClickListener(this::show_menu);
 
         // TextView as Button
         TextView btn_new_user = (TextView) findViewById(R.id.new_user);
@@ -61,19 +61,5 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    public void show_menu(View v){
-        PopupMenu popup = new PopupMenu(this, v);
-        MenuInflater inflater = popup.getMenuInflater();
-        inflater.inflate(R.menu.menu_popup,popup.getMenu());
-        popup.setOnMenuItemClickListener((item)->{
-            if(item.getItemId() == R.id.about){
-                Intent intentAbout = new Intent(v.getContext(), AboutActivity.class);
-                startActivity(intentAbout);
-            }
-            return  true;
-        });
-        popup.show();
-
-    }
 
 }

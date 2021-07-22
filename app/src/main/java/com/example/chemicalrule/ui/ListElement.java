@@ -1,18 +1,28 @@
 package com.example.chemicalrule.ui;
 
+import android.graphics.drawable.Drawable;
+
 public class ListElement {
+    public int imageSrc;
     public String color;
     public String name;
     public String address;
     public String review;
 
-    public ListElement(String color, String name, String address, String review) {
+    public ListElement(int imageSrc,String color, String name, String address, String review) {
+        this.imageSrc = imageSrc;
         this.color = color;
         this.name = name;
         this.address = address;
         this.review = review;
     }
 
+    public int getImageSrc() {
+        return imageSrc;
+    }
+    public void setImageSrc(int imageSrc) {
+        this.imageSrc = imageSrc;
+    }
     public String getColor() {
         return color;
     }
