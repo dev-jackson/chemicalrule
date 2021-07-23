@@ -5,16 +5,23 @@
     <item
         android:id="@+id/home"
         android:icon="@drawable/ic_baseline_home_24"
+        app:cnb_iconColor="@color/white"
+        app:cnb_textColor="@color/white"
         android:title="Home"/>
 
     <item
         android:id="@+id/saved"
         android:icon="@drawable/ic_baseline_notifications_24"
-        android:title="Alerts"/>
+        app:cnb_iconColor="@color/white"
+        app:cnb_textColor="@color/white"
+        android:title="Notifications"/>
+
 
     <item
         android:id="@+id/user"
         android:icon="@drawable/ic_baseline_account_circle_24"
+        app:cnb_iconColor="@color/white"
+        app:cnb_textColor="@color/white"
         android:title="User"/>
 
 

@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         Button btn_login = (Button) findViewById(R.id.btn_login);
-        ImageButton btnMenu = (ImageButton) findViewById(R.id.menu_test);
+        
         //btnMenu.setOnClickListener(this::show_menu);
 
         // TextView as Button
