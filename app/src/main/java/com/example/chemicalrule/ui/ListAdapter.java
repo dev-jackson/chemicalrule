@@ -2,6 +2,7 @@ package com.example.chemicalrule.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.chemicalrule.R;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 import static androidx.core.content.ContextCompat.startActivity;
@@ -50,7 +52,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         holder.cardItem.setOnClickListener((v)->{
            Intent intent = new Intent(v.getContext(), ItemLocationActivity.class);
            intent.putExtra("title",holder.name.getText().toString());
-           intent.putExtra("srcImage",(String) holder.imageCard.getTag());
+           intent.putExtra("srcImage",mData.get(position).getImageSrc());
+           intent.putExtra("address",holder.address.getText().toString());
+           intent.putExtra("review",holder.review.getText().toString());
            v.getContext().startActivity(intent);
            notifyDataSetChanged();
         });
@@ -62,6 +66,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         CardView cardItem;
         ImageView imageCard;
         TextView name,address,review;
+        int srcImage;
 
         ViewHolder(View itemView){
             super(itemView);
