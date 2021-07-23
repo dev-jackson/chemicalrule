@@ -12,6 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.example.chemicalrule.AboutActivity;
 import com.example.chemicalrule.R;
@@ -31,9 +34,9 @@ public class HomeFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    MaterialToolbar appBar;
     List<ListElement> elements;
-
+    Spinner search;
+    String[] types = {"Location","Typical Food"};
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -84,48 +87,44 @@ public class HomeFragment extends Fragment {
     }
 
     public void init(View view){
-        appBar = (MaterialToolbar) view.findViewById(R.id.toolBar);
-        appBar.setOnMenuItemClickListener((item)->{
-            if(item.getItemId() == R.id.about){
-                Intent intentAbout = new Intent(view.getContext(), AboutActivity.class);
-                startActivity(intentAbout);
-            }
-            return  true;
-        });
+        search = (Spinner)view.findViewById(R.id.spinnerSearch);
+        ArrayAdapter<CharSequence> ad = new ArrayAdapter<CharSequence>(view.getContext(),R.layout.support_simple_spinner_dropdown_item,types);
+        ad.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        search.setAdapter(ad);
         elements = new ArrayList<>();
         elements
                 .add(new ListElement(R.drawable.malecon2000,
-                        "#777544","Malecom 2000", "Malecón, Av. Vicente Rocafuerte Bejarano, Guayaquil 090313","Exelente"));
+                        "#777544","Malecom 2000", "Malecón, Av. Vicente Rocafuerte Bejarano, Guayaquil 090313","Exelente","Location"));
         elements
                 .add(new ListElement(R.drawable.lps,
-                        "#777544","Malecom 2000", "Malecón, Av. Vicente Rocafuerte Bejarano, Guayaquil 090313","Exelente"));
+                        "#777544","Las peñas", "Malecón, Av. Vicente Rocafuerte Bejarano, Guayaquil 090313","Exelente", "Locacion"));
         elements
                 .add(new ListElement(R.drawable.samanes,
-                        "#777544","Malecom 2000", "Guayaquil","Exelente"));
-        elements
-                .add(new ListElement(R.drawable.samanes,
-                        "#777544","Malecom 2000", "Guayaquil","Exelente"));
+                        "#777544","Malecom 2000", "Guayaquil","Exelente","Fypical Food"));
         elements
                 .add(new ListElement(R.drawable.lps,
-                        "#777544","Malecom 2000", "Guayaquil","Exelente"));
-        elements
-                .add(new ListElement(R.drawable.samanes,
-                        "#777544","Malecom 2000", "Guayaquil","Exelente"));
-        elements
-                .add(new ListElement(R.drawable.samanes,
-                        "#777544","Malecom 2000", "Guayaquil","Exelente"));
+                        "#777544","Las peñas", "Guayaquil","Exelente","Fypical Food"));
         elements
                 .add(new ListElement(R.drawable.lps,
-                        "#777544","Malecom 2000", "Guayaquil","Exelente"));
+                        "#777544","Malecom 2000", "Guayaquil","Exelente","Location"));
         elements
                 .add(new ListElement(R.drawable.samanes,
-                        "#777544","Malecom 2000", "Guayaquil","Exelente"));
+                        "#777544","Samanes", "Guayaquil","Exelente", "Location"));
         elements
                 .add(new ListElement(R.drawable.samanes,
-                        "#777544","Malecom 2000", "Malecón, Av. Vicente Rocafuerte Bejarano, Guayaquil 090313","Exelente"));
+                        "#777544","Malecom 2000", "Guayaquil","Exelente","Fypical Food"));
+        elements
+                .add(new ListElement(R.drawable.lps,
+                        "#777544","Las peñas", "Guayaquil","Exelente","Fypical Food"));
         elements
                 .add(new ListElement(R.drawable.samanes,
-                        "#777544","Malecom 2000", "Guayaquil","Exelente"));
+                        "#777544","Samanes", "Guayaquil","Exelente", "Location"));
+        elements
+                .add(new ListElement(R.drawable.samanes,
+                        "#777544","Malecom 2000", "Malecón, Av. Vicente Rocafuerte Bejarano, Guayaquil 090313","Exelente", "Locaction"));
+        elements
+                .add(new ListElement(R.drawable.lps,
+                        "#777544","Las peñas", "Guayaquil","Exelente", "Location"));
 //        elements
 //                .add(new ListElement(
 //                        "#777544","Malecom 2000", "Guayaquil","Exelente"));
@@ -136,5 +135,18 @@ public class HomeFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setAdapter(listAdapter);
+        search.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(position >= 0 && position < listAdapter.getItemCount()){
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 }

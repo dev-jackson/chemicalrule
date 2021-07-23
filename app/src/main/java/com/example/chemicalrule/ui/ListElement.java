@@ -8,13 +8,22 @@ public class ListElement {
     public String name;
     public String address;
     public String review;
+    public String type;
 
-    public ListElement(int imageSrc,String color, String name, String address, String review) {
+    public ListElement(int imageSrc,String color, String name, String address, String review, String type) {
         this.imageSrc = imageSrc;
         this.color = color;
         this.name = name;
         this.address = address;
         this.review = review;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public int getImageSrc() {

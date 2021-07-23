@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/cac"
+            android:background="@drawable/widget_custom_border"
+            android:padding="12dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:backgroundTint="@color/cac"
+                android:textStyle="bold"
+                android:padding="14dp"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:layout_height="match_parent"
+                android:text="Ask to be a reviewer"/>
+            <Button
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white2"
+                android:textColor="@color/black"
+                android:textSize="12dp"
+                android:text="Ask be"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>
