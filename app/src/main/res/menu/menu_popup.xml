@@ -20,6 +20,8 @@
                     android:title="@string/about"/>
             </menu>
     </item>
+    <item android:id="@+id/delete_share_p"
+        android:title="Eliminar datos"/>
     <item android:id="@+id/i_exit"
         android:icon="@drawable/ic_baseline_exit_to_app_24"
         android:title="@string/exit"/>

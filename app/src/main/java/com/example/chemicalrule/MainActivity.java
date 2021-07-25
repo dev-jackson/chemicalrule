@@ -5,14 +5,18 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.chemicalrule.ui.HomeFragment;
 import com.example.chemicalrule.ui.SavedFragment;
 import com.example.chemicalrule.ui.UserFragment;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.snackbar.Snackbar;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 import java.util.Objects;
@@ -40,9 +44,27 @@ public class MainActivity extends AppCompatActivity {
         appBar = (MaterialToolbar) findViewById(R.id.toolBar);
         appBar.bringToFront();
         appBar.setOnMenuItemClickListener((item)->{
-            if(item.getItemId() == R.id.about){
-                Intent intentAbout = new Intent(this, AboutActivity.class);
-                startActivity(intentAbout);
+            switch (item.getItemId()){
+                case R.id.about:
+                    Intent intentAbout = new Intent(this, AboutActivity.class);
+                    startActivity(intentAbout);
+                    break;
+                case R.id.delete_share_p:
+                    SharedPreferences preferences =
+                            getSharedPreferences("credentials", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putBoolean("isSession", false);
+                    editor.putString("username", "");
+                    editor.putString("password", "");
+                    editor.apply();
+                    Toast.makeText(
+                            this,
+                            "Datos share eliminados",
+                            Toast.LENGTH_LONG
+                    ).show();
+//                    finish();
+                    break;
+
             }
             return  true;
         });

@@ -134,6 +134,7 @@
                     android:text="@string/version"/>
             </LinearLayout>
         </LinearLayout>
+
     </LinearLayout>
 
 
