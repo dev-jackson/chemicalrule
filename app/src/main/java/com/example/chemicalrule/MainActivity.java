@@ -14,9 +14,7 @@ import android.widget.Toast;
 
 import com.example.chemicalrule.ui.HomeFragment;
 import com.example.chemicalrule.ui.SavedFragment;
-import com.example.chemicalrule.ui.UserFragment;
 import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.snackbar.Snackbar;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 import java.util.Objects;

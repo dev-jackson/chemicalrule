@@ -1,20 +1,20 @@
 package com.example.chemicalrule;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
-import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
+
+import com.example.chemicalrule.db.OpenHelperSql;
+import com.example.chemicalrule.model.UserModel;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -53,9 +53,19 @@ public class RegisterActivity extends AppCompatActivity {
                     if(!password.getText().toString().equals(repeatPassword.getText().toString())){
                         Snackbar.make(v.getContext(),v,"La contranseña no es igual",Snackbar.LENGTH_LONG).show();
                     }else{
-                        Toast.makeText(v.getContext(),"Registro exitis",Toast.LENGTH_LONG).show();
-                        Intent login = new Intent(v.getContext(),LoginActivity.class);
-                        startActivity(login);
+                        //Toast.makeText(v.getContext(),"Registro exitis",Toast.LENGTH_LONG).show();
+                        UserModel user = new UserModel();
+                        user.setUsername(username.getText().toString());
+                        user.setEmail(email.getText().toString());
+                        user.setPassword(password.getText().toString());
+                        user.setBirth_date(dateOfBirth.getText().toString());
+                        OpenHelperSql openHelperSql = new OpenHelperSql(this);
+                        boolean isSave = openHelperSql.saveUser(user);
+                        if(isSave){
+                            Snackbar.make(this,v,"Guardado exitoso",Snackbar.LENGTH_LONG).show();
+                        }
+//                        Intent login = new Intent(v.getContext(),LoginActivity.class);
+//                        startActivity(login);
                     }
                 }else{
                     Snackbar.make(v.getContext(),v,"Llene todos los campos",Snackbar.LENGTH_LONG).show();

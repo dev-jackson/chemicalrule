@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable/image_list_shape.xml" value="0.378974358974359" />
+        <entry key="app/src/main/res/drawable/line_divider.xml" value="0.22239583333333332" />
+        <entry key="app/src/main/res/layout/activity_crud.xml" value="0.3541666666666667" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.20425724637681159" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.3541666666666667" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3697916666666667" />
+        <entry key="app/src/main/res/layout/item_location.xml" value="0.20425724637681159" />
+        <entry key="app/src/main/res/layout/list_item.xml" value="0.416403785488959" />
+        <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.36875" />
+        <entry key="app/src/main/res/menu/navigation.xml" value="0.36875" />
+      </map>
+    </option>
+  </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="org.jetbrains.annotations.Nullable" />
     <option name="myDefaultNotNull" value="androidx.annotation.NonNull" />
@@ -25,7 +41,7 @@
     </option>
     <option name="myNotNulls">
       <value>
-        <list size="13">
+        <list size="14">
           <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.NotNull" />
           <item index="1" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.NonNull" />
           <item index="2" class="java.lang.String" itemvalue="android.support.annotation.NonNull" />
@@ -39,6 +55,7 @@
           <item index="10" class="java.lang.String" itemvalue="org.eclipse.jdt.annotation.NonNull" />
           <item index="11" class="java.lang.String" itemvalue="io.reactivex.annotations.NonNull" />
           <item index="12" class="java.lang.String" itemvalue="io.reactivex.rxjava3.annotations.NonNull" />
+          <item index="13" class="java.lang.String" itemvalue="lombok.NonNull" />
         </list>
       </value>
     </option>
