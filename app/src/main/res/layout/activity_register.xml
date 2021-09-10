@@ -40,14 +40,6 @@
                 android:textColor="@color/white"
                 android:textSize="28sp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15dp"
-                android:layout_marginVertical="0dp"
-                android:text="@string/legend_login"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -100,13 +92,14 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clickable="true"
                 android:layout_marginVertical="10dp"
                 android:hint="@string/date_of_birth">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/data_of_birth"
                     android:inputType="date"
+                    android:focusable="false"
+                    android:maxLines="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true" />

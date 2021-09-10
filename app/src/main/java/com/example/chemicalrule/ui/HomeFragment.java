@@ -15,8 +15,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
+import com.example.chemicalrule.ActivityRegisterItem;
 import com.example.chemicalrule.R;
 import com.google.android.material.appbar.MaterialToolbar;
 
@@ -35,8 +37,7 @@ public class HomeFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     List<ListElement> elements;
-    Spinner search;
-    String[] types = {"Location","Typical Food"};
+    Button btnAddLocation;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -84,50 +85,47 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         init(view);
+
     }
 
     public void init(View view){
-        search = (Spinner)view.findViewById(R.id.spinnerSearch);
-        ArrayAdapter<CharSequence> ad = new ArrayAdapter<CharSequence>(view.getContext(),R.layout.support_simple_spinner_dropdown_item,types);
-        ad.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        search.setAdapter(ad);
         elements = new ArrayList<>();
-        elements
-                .add(new ListElement(R.drawable.malecon2000,
-                        "#777544","Malecom 2000", "Malecón, Av. Vicente Rocafuerte Bejarano, Guayaquil 090313","Exelente","Location"));
-        elements
-                .add(new ListElement(R.drawable.lps,
-                        "#777544","Las peñas", "Malecón, Av. Vicente Rocafuerte Bejarano, Guayaquil 090313","Exelente", "Locacion"));
-        elements
-                .add(new ListElement(R.drawable.samanes,
-                        "#777544","Malecom 2000", "Guayaquil","Exelente","Fypical Food"));
-        elements
-                .add(new ListElement(R.drawable.lps,
-                        "#777544","Las peñas", "Guayaquil","Exelente","Fypical Food"));
-        elements
-                .add(new ListElement(R.drawable.lps,
-                        "#777544","Malecom 2000", "Guayaquil","Exelente","Location"));
-        elements
-                .add(new ListElement(R.drawable.samanes,
-                        "#777544","Samanes", "Guayaquil","Exelente", "Location"));
-        elements
-                .add(new ListElement(R.drawable.samanes,
-                        "#777544","Malecom 2000", "Guayaquil","Exelente","Fypical Food"));
-        elements
-                .add(new ListElement(R.drawable.lps,
-                        "#777544","Las peñas", "Guayaquil","Exelente","Fypical Food"));
-        elements
-                .add(new ListElement(R.drawable.samanes,
-                        "#777544","Samanes", "Guayaquil","Exelente", "Location"));
-        elements
-                .add(new ListElement(R.drawable.samanes,
-                        "#777544","Malecom 2000", "Malecón, Av. Vicente Rocafuerte Bejarano, Guayaquil 090313","Exelente", "Locaction"));
-        elements
-                .add(new ListElement(R.drawable.lps,
-                        "#777544","Las peñas", "Guayaquil","Exelente", "Location"));
 //        elements
-//                .add(new ListElement(
-//                        "#777544","Malecom 2000", "Guayaquil","Exelente"));
+//                .add(new ListElement(R.drawable.malecon2000,
+//                        "#777544","Malecom 2000", "Malecón, Av. Vicente Rocafuerte Bejarano, Guayaquil 090313","Exelente","Location"));
+//        elements
+//                .add(new ListElement(R.drawable.lps,
+//                        "#777544","Las peñas", "Malecón, Av. Vicente Rocafuerte Bejarano, Guayaquil 090313","Exelente", "Locacion"));
+//        elements
+//                .add(new ListElement(R.drawable.samanes,
+//                        "#777544","Malecom 2000", "Guayaquil","Exelente","Fypical Food"));
+//        elements
+//                .add(new ListElement(R.drawable.lps,
+//                        "#777544","Las peñas", "Guayaquil","Exelente","Fypical Food"));
+//        elements
+//                .add(new ListElement(R.drawable.lps,
+//                        "#777544","Malecom 2000", "Guayaquil","Exelente","Location"));
+//        elements
+//                .add(new ListElement(R.drawable.samanes,
+//                        "#777544","Samanes", "Guayaquil","Exelente", "Location"));
+//        elements
+//                .add(new ListElement(R.drawable.samanes,
+//                        "#777544","Malecom 2000", "Guayaquil","Exelente","Fypical Food"));
+//        elements
+//                .add(new ListElement(R.drawable.lps,
+//                        "#777544","Las peñas", "Guayaquil","Exelente","Fypical Food"));
+//        elements
+//                .add(new ListElement(R.drawable.samanes,
+//                        "#777544","Samanes", "Guayaquil","Exelente", "Location"));
+//        elements
+//                .add(new ListElement(R.drawable.samanes,
+//                        "#777544","Malecom 2000", "Malecón, Av. Vicente Rocafuerte Bejarano, Guayaquil 090313","Exelente", "Locaction"));
+//        elements
+//                .add(new ListElement(R.drawable.lps,
+//                        "#777544","Las peñas", "Guayaquil","Exelente", "Location"));
+////        elements
+////                .add(new ListElement(
+////                        "#777544","Malecom 2000", "Guayaquil","Exelente"));
 
         ListAdapter listAdapter = new ListAdapter(elements, view.getContext());
 
@@ -136,18 +134,10 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setAdapter(listAdapter);
         recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(),LinearLayoutManager.VERTICAL));
-        search.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(position >= 0 && position < listAdapter.getItemCount()){
-
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
+        btnAddLocation = (Button) view.findViewById(R.id.add_location);
+        btnAddLocation.setOnClickListener((v)->{
+            Intent intent = new Intent(v.getContext(),ActivityRegisterItem.class);
+            startActivity(intent);
         });
     }
 }

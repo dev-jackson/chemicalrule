@@ -1,5 +1,6 @@
 package com.example.chemicalrule;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -19,6 +20,7 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.chemicalrule.db.OpenHelperSql;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -29,6 +31,8 @@ public class LoginActivity extends AppCompatActivity {
     TextInputEditText textPassword;
     TextView textViewCreateAccount;
     Button btnLogin;
+    int id_user = 1;
+    int type;
     SharedPreferences preferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +47,19 @@ public class LoginActivity extends AppCompatActivity {
 
         textViewCreateAccount.setOnClickListener((view)->{
             Intent new_user = new Intent(view.getContext(), RegisterActivity.class);
-            startActivity(new_user);
+            startActivityForResult(new_user,10);
         });
+        textUsername.setText(getIntent().getStringExtra("username"));
+        textPassword.setText(getIntent().getStringExtra("password"));
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK){
+
+        }
     }
 
     public void initElements(){
@@ -65,8 +80,10 @@ public class LoginActivity extends AppCompatActivity {
 
         String username = Objects.requireNonNull(textUsername.getText()).toString();
         String password = Objects.requireNonNull(textPassword.getText()).toString();
-
-        if((username.equals("user") && password.equals("123"))){
+        OpenHelperSql openHelperSql = new OpenHelperSql(this);
+        if((openHelperSql.loginUser(username,password))!=null){
+            id_user = openHelperSql.loginUser(username,password).getId();
+            type = openHelperSql.loginUser(username,password).getType();
 //                enter.putExtra("name",text_username.toString()); //send data
             AlertDialog.Builder alertPreference = new AlertDialog.Builder(this);
             alertPreference.setTitle("Guardar sesion?");
@@ -105,6 +122,20 @@ public class LoginActivity extends AppCompatActivity {
         editor.putBoolean("isSession", true);
         editor.putString("username", Objects.requireNonNull(textUsername.getText()).toString());
         editor.putString("password", Objects.requireNonNull(textPassword.getText()).toString());
+        editor.apply();
+        preferences = getSharedPreferences("userIsNowSession",Context.MODE_PRIVATE);
+        @SuppressLint("CommitPrefEdits") SharedPreferences.Editor editor1 = preferences.edit();
+        if(id_user == 0){
+            editor.putInt("id_user",getIntent().getIntExtra("id_user",0));
+            editor.putString("type",getIntent().getStringExtra("type"));
+        }else{
+            editor.putInt("id_user",id_user);
+            if(type == 1){
+                editor.putString("type","normal");
+            }else{
+                editor.putString("type","admin");
+            }
+        }
         editor.apply();
     }
 

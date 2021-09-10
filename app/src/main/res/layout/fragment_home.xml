@@ -14,6 +14,7 @@
         android:padding="6dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
         <LinearLayout
+            android:id="@+id/section_bottom_add_p"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -22,18 +23,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
+                android:gravity="center"
+                android:orientation="horizontal"
                 android:paddingHorizontal="12dp"
                 >
-                <TextView
+                <Button
+                    android:id="@+id/add_location"
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Filter:"
-                    android:textSize="16sp"/>
-                <Spinner
-                android:id="@+id/spinnerSearch"
-                    android:background="@color/white2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                    android:text="@string/add_publication"/>
             </LinearLayout>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/listLocation"

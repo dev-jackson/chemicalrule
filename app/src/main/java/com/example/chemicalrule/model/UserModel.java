@@ -1,6 +1,6 @@
 package com.example.chemicalrule.model;
 
-import java.util.Date;
+import java.sql.Blob;
 
 public class UserModel {
     private int id;
@@ -8,14 +8,30 @@ public class UserModel {
     private String email;
     private String password;
     private String birth_date;
+    private int type;
 
     public UserModel(){}
-    public UserModel(int id, String username, String email, String password, String birth_date) {
+
+    public UserModel(int id,int type) {
+        this.id = id;
+        this.type = type;
+    }
+
+    public UserModel(int id, String username, String email, String password, String birth_date, int type) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
         this.birth_date = birth_date;
+        this.type = type;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 
     public int getId() {
