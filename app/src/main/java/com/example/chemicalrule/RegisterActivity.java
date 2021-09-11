@@ -76,13 +76,13 @@ public class RegisterActivity extends AppCompatActivity {
                         UserModel usermodel = openHelperSql.saveUser(user);
                         if(usermodel != null){
                             Toast.makeText(v.getContext(),"Guardado existoso",Toast.LENGTH_LONG).show();
-                            Intent resultIntent = new Intent();
+                            Intent resultIntent = new Intent(this,MainActivity.class);
                             resultIntent.putExtra("id_user",usermodel.getId());
                             resultIntent.putExtra("type","normal");
                             resultIntent.putExtra("username",user.getUsername());
                             resultIntent.putExtra("password", user.getPassword());
-                            setResult(Activity.RESULT_OK, resultIntent);
-                            finish();
+                            startActivity(resultIntent);
+//                            finish();
                         }
                     }
                 }else{

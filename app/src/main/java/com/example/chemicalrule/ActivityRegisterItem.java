@@ -3,11 +3,14 @@ package com.example.chemicalrule;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -17,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.chemicalrule.db.OpenHelperSql;
+import com.example.chemicalrule.model.PublicationModel;
 import com.google.android.gms.maps.MapView;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -28,7 +32,7 @@ import java.util.Objects;
 public class ActivityRegisterItem extends AppCompatActivity {
 
     ImageView image;
-    Button btnImage,btnLocation;
+    Button btnImage,btnLocation, btnRegister,btnCancel;
     String pathImage;
     TextInputEditText nameLocation,descriptionLocation, textLatitude,textLongitude;
     @Override
@@ -43,6 +47,18 @@ public class ActivityRegisterItem extends AppCompatActivity {
         textLatitude = (TextInputEditText) findViewById(R.id.input_latitude);
         textLongitude = (TextInputEditText) findViewById(R.id.input_longitude);
         btnLocation = (Button) findViewById(R.id.btn_location);
+        btnRegister = (Button) findViewById(R.id.save_register_p);
+        btnCancel = (Button) findViewById(R.id.cancel_register_p);
+        btnCancel.setOnClickListener((v)->{
+            finish();
+        });
+        btnRegister.setOnClickListener((v)->{
+            try {
+                saveLocation();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
         btnLocation.setOnClickListener(this::openGoogleFragment);
         btnImage.setOnClickListener(this::loadImg);
 
@@ -98,22 +114,46 @@ public class ActivityRegisterItem extends AppCompatActivity {
     }
 
     public void saveLocation() throws IOException {
+
+        if (Build.VERSION.SDK_INT >= 23) {
+            int REQUEST_CODE_PERMISSION_STORAGE = 100;
+            String[] permissions = {
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+            };
+
+            for (String str : permissions) {
+                if (this.checkSelfPermission(str) != PackageManager.PERMISSION_GRANTED) {
+                    this.requestPermissions(permissions, REQUEST_CODE_PERMISSION_STORAGE);
+                }
+            }
+        }
         FileInputStream image = new FileInputStream(pathImage);
         OpenHelperSql openHelperSql = new OpenHelperSql(this);
         byte[] bimage = new byte[image.available()];
-        ContentValues values = new ContentValues();
-        values.put("username", Objects.requireNonNull(nameLocation.getText()).toString());
-        values.put("description", Objects.requireNonNull(descriptionLocation.getText()).toString());
-        values.put("geolongitude", Objects.requireNonNull(textLongitude.getText()).toString());
-        values.put("geolatitude", Objects.requireNonNull(textLatitude.getText()).toString());
-        values.put("image", bimage);
-        image.close();
-        if(openHelperSql.createPublication(values)){
-            Toast.makeText(this,"Publicacion guardad con exito!",Toast.LENGTH_LONG).show();
-            finish();
+        image.read(bimage);
+        PublicationModel publicationModel = new PublicationModel();
+        publicationModel.setName(Objects.requireNonNull(nameLocation.getText()).toString());
+        publicationModel.setDescription(Objects.requireNonNull(descriptionLocation.getText()).toString());
+        publicationModel.setLatitude(Objects.requireNonNull(textLatitude.getText()).toString());
+        publicationModel.setLongitude(Objects.requireNonNull(textLongitude.getText()).toString());
+        publicationModel.setImage(bimage);
+        PublicationModel pmodel = openHelperSql.createPublication(publicationModel);
+        if(pmodel != null){
+            boolean ban = openHelperSql.createRelationUserPublication(
+                    getIntent().getIntExtra("id_user",0),
+                    pmodel.getId_publication()
+                    );
+            if(ban){
+                Toast.makeText(this,"Publicacion guardad con exito!",Toast.LENGTH_LONG).show();
+                finish();
+            }else{
+                Toast.makeText(this,"Ocurrio un error intente nuevamente",Toast.LENGTH_LONG).show();
+            }
         }else{
             Toast.makeText(this,"Ocurrio un error intente nuevamente",Toast.LENGTH_LONG).show();
         }
+        image.close();
 
     }
 }

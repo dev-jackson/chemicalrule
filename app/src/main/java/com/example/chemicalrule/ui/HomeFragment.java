@@ -20,6 +20,8 @@ import android.widget.Spinner;
 
 import com.example.chemicalrule.ActivityRegisterItem;
 import com.example.chemicalrule.R;
+import com.example.chemicalrule.db.OpenHelperSql;
+import com.example.chemicalrule.model.PublicationModel;
 import com.google.android.material.appbar.MaterialToolbar;
 
 import java.util.ArrayList;
@@ -36,12 +38,16 @@ public class HomeFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    List<ListElement> elements;
+    ArrayList<PublicationModel> elements;
     Button btnAddLocation;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    int id_user = 0;
+    public HomeFragment(int id) {
+        this.id_user = id;
+        // Required empty public constructor
+    }
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -89,7 +95,8 @@ public class HomeFragment extends Fragment {
     }
 
     public void init(View view){
-        elements = new ArrayList<>();
+        OpenHelperSql openHelperSql = new OpenHelperSql(view.getContext());
+        elements = openHelperSql.getAllPublication();
 //        elements
 //                .add(new ListElement(R.drawable.malecon2000,
 //                        "#777544","Malecom 2000", "Malecón, Av. Vicente Rocafuerte Bejarano, Guayaquil 090313","Exelente","Location"));
@@ -137,7 +144,9 @@ public class HomeFragment extends Fragment {
         btnAddLocation = (Button) view.findViewById(R.id.add_location);
         btnAddLocation.setOnClickListener((v)->{
             Intent intent = new Intent(v.getContext(),ActivityRegisterItem.class);
+            intent.putExtra("id_user",id_user);
             startActivity(intent);
+            init(v);
         });
     }
 }

@@ -7,19 +7,30 @@ public class PublicationModel {
 //    geolaitude text not null,
 //    geolength text not null,
 //    image blob not null
+    private  int id_publication;
     private String name;
     private String description;
-    private double latitude;
-    private double longitude;
+    private String latitude;
+    private String longitude;
     private byte[] image;
 
     public PublicationModel(){}
-    public PublicationModel(String name, String description, double latitude, double longitude, byte[] image) {
+
+    public PublicationModel(int id_publication, String name, String description, String latitude, String longitude, byte[] image) {
+        this.id_publication = id_publication;
         this.name = name;
         this.description = description;
         this.latitude = latitude;
         this.longitude = longitude;
         this.image = image;
+    }
+
+    public int getId_publication() {
+        return id_publication;
+    }
+
+    public void setId_publication(int id_publication) {
+        this.id_publication = id_publication;
     }
 
     public String getName() {
@@ -38,19 +49,19 @@ public class PublicationModel {
         this.description = description;
     }
 
-    public double getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(double latitude) {
+    public void setLatitude(String latitude) {
         this.latitude = latitude;
     }
 
-    public double getLongitude() {
+    public String getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(double longitude) {
+    public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
 

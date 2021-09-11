@@ -30,10 +30,14 @@ public class ItemLocationActivity extends AppCompatActivity {
         ImageView image = (ImageView) findViewById(R.id.imageItem);
         TextView address = (TextView)findViewById(R.id.address);
         TextView review = (TextView) findViewById(R.id.review);
+        TextView description = (TextView) findViewById(R.id.description);
         title.setText(getIntent().getStringExtra("title"));
-        image.setImageResource(getIntent().getIntExtra("srcImage",0));
+        byte[] bimage = getIntent().getByteArrayExtra("bImage");
+        Bitmap bmp = BitmapFactory.decodeByteArray(bimage,0,bimage.length);
+        image.setImageBitmap(bmp);
         address.setText(getIntent().getStringExtra("address"));
         review.setText(getIntent().getStringExtra("review"));
+        description.setText(getIntent().getStringExtra("description"));
 
 
 

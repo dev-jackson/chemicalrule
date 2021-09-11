@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     ChipNavigationBar bottomBar;
     FragmentManager fragmentManager;
     MaterialToolbar appBar;
+    int idUser = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState); 
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     @SuppressLint("NonConstantResourceId")
     public void init(Bundle savedIn) {
+        idUser = getIntent().getIntExtra("id_user",0);
         appBar = (MaterialToolbar) findViewById(R.id.toolBar);
         appBar.bringToFront();
         appBar.setOnMenuItemClickListener((item)->{
@@ -82,13 +84,13 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fragment = null;
                 switch (id){
                     case R.id.home:
-                        fragment = new HomeFragment();
+                        fragment = new HomeFragment(idUser);
                         break;
                     case R.id.saved:
                         fragment = new SavedFragment();
                         break;
                     case R.id.user:
-                        fragment = new ProfileFragment();
+                        fragment = new ProfileFragment(idUser);
                         Log.d("Inf","user");
                         break;
                 }

@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.chemicalrule.db.OpenHelperSql;
+import com.example.chemicalrule.model.UserModel;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -58,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == RESULT_OK){
-
+            Log.d("1",data.getStringExtra("id_user"));
         }
     }
 
@@ -81,9 +82,16 @@ public class LoginActivity extends AppCompatActivity {
         String username = Objects.requireNonNull(textUsername.getText()).toString();
         String password = Objects.requireNonNull(textPassword.getText()).toString();
         OpenHelperSql openHelperSql = new OpenHelperSql(this);
-        if((openHelperSql.loginUser(username,password))!=null){
-            id_user = openHelperSql.loginUser(username,password).getId();
-            type = openHelperSql.loginUser(username,password).getType();
+        if(!username.equals("") && !password.equals("")){
+            UserModel userModel = openHelperSql.loginUser(username,password);
+            if(userModel != null){
+                id_user = userModel.getId();
+                type = userModel.getType();
+            }else{
+                Snackbar.make(v,"Incorrect credentials",Snackbar.LENGTH_LONG)
+                        .setAction("Action",null).show();
+                return;
+            }
 //                enter.putExtra("name",text_username.toString()); //send data
             AlertDialog.Builder alertPreference = new AlertDialog.Builder(this);
             alertPreference.setTitle("Guardar sesion?");
@@ -111,7 +119,7 @@ public class LoginActivity extends AppCompatActivity {
                     });
             alertPreference.show();
         }else{
-            Snackbar.make(v,"Incorrect credentials",Snackbar.LENGTH_LONG)
+            Snackbar.make(v,"Incorrect credentials or null",Snackbar.LENGTH_LONG)
                     .setAction("Action",null).show();
 
         }
